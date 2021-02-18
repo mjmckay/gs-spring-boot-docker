@@ -2,14 +2,14 @@ resources:
   - name: myGitRepo
     type: GitRepo
     configuration:
-      gitProvider: my_github
+      gitProvider: myGit
       path: mjmckay/gs-spring-boot-docker
       branches:
         include: master
   - name: myBuildInfo
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: myArt
       buildName: SpringBootContained
       buildNumber: 1
 pipelines:
@@ -74,7 +74,7 @@ pipelines:
             - name: step_3
             - name: step_4
           integrations:
-            - name: my_github
+            - name: myGit
         execution:
           onExecute:
-            - 'curl -H "Authorization: token ${int_my_github_token}" ${int_my_github_url}/rate_limit'
+            - 'curl -H "Authorization: token ${int_myGit_token}" ${int_myGit_url}/rate_limit'
